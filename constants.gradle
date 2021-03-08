@@ -1,0 +1,10 @@
+project.ext {
+    releaseVersion = '1.0.0'
+    releaseVersionCode = 1
+
+    minSdkVersion = 21
+    targetSdkVersion = 30
+    compileSdkVersion = 30
+    buildToolsVersion="30.0.3"
+}
+

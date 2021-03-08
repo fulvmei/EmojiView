@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="EmojiView">
+        <attr name="emojiSize" format="dimension" />
+        <attr name="emojiAlign" format="enum">
+            <enum name="bottom" value="0" />
+            <enum name="baseline" value="1" />
+            <enum name="center" value="2" />
+        </attr>
+    </declare-styleable>
+</resources>
