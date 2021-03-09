@@ -3,6 +3,8 @@ package com.chengfu.android.emoji;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
 import android.text.style.DynamicDrawableSpan;
 import android.util.AttributeSet;
 
@@ -41,6 +43,7 @@ public class EmojiTextView extends AppCompatTextView {
             emojiAlign = a.getInt(R.styleable.EmojiView_emojiAlign, DynamicDrawableSpan.ALIGN_BOTTOM);
             a.recycle();
         }
+        updateEmoji();
     }
 
 
@@ -72,13 +75,16 @@ public class EmojiTextView extends AppCompatTextView {
     }
 
     @Override
-    protected void onTextChanged(CharSequence text, int start, int lengthBefore, int lengthAfter) {
-        super.onTextChanged(text, start, lengthBefore, lengthAfter);
-
-        updateEmoji();
+    public void setText(CharSequence text, BufferType type) {
+        if (!TextUtils.isEmpty(text)) {
+            SpannableStringBuilder builder = new SpannableStringBuilder(text);
+            EmojiUtil.buildEmojiSpannable(getContext(), getEmojiSize(), getEmojiAlign(), builder, getEmojis());
+            text = builder;
+        }
+        super.setText(text, type);
     }
 
     private void updateEmoji() {
-        EmojiUtil.buildEmojiSpannable(getContext(), emojiSize, emojiAlign, getEditableText(), emojis);
+        setText(getText());
     }
 }
