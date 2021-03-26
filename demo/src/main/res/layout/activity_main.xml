@@ -8,15 +8,23 @@
     tools:context=".MainActivity">
 
     <com.chengfu.android.emoji.EmojiTextView
-        android:layout_width="match_parent"
         android:id="@+id/text"
-        android:layout_height="wrap_content"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:emojiMarginLeft="20dp"
+        app:emojiMarginRight="20dp"
+        app:emojiAlign="center"
+        app:emojiMatchType="one"
+        app:emojiSize="80dp" />
 
     <com.chengfu.android.emoji.EmojiEditText
         android:id="@+id/edit"
+        android:gravity="top"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        app:emojiSize="100dp" />
+        android:layout_height="match_parent"
+        app:emojiMarginLeft="20dp"
+        app:emojiMarginRight="20dp"
+        app:emojiSize="80dp" />
 
 
 </LinearLayout>

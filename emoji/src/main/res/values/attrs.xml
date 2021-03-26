@@ -2,10 +2,17 @@
 <resources>
     <declare-styleable name="EmojiView">
         <attr name="emojiSize" format="dimension" />
+        <attr name="emojiMarginLeft" format="dimension" />
+        <attr name="emojiMarginRight" format="dimension" />
         <attr name="emojiAlign" format="enum">
             <enum name="bottom" value="0" />
             <enum name="baseline" value="1" />
             <enum name="center" value="2" />
+        </attr>
+        <attr name="emojiMatchType" format="enum" >
+            <enum name="full" value="0" />
+            <enum name="start" value="1" />
+            <enum name="one" value="2" />
         </attr>
     </declare-styleable>
 </resources>

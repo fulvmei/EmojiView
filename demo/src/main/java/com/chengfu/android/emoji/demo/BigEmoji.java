@@ -61,7 +61,7 @@ public class BigEmoji {
     public static List<Emoji> getDefaultBigEmojis() {
         List<Emoji> emojis = new ArrayList<>();
         for (int i = 0; i < NAMES.length; i++) {
-            Emoji bigEmoji = new Emoji("[" + NAMES[i] + "]", RES[i], NAMES[i]);
+            Emoji bigEmoji = new Emoji("["+NAMES[i]+"]", RES[i], NAMES[i]);
             emojis.add(bigEmoji);
         }
         return emojis;
