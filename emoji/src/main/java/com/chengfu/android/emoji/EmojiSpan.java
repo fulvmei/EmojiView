@@ -25,6 +25,9 @@ public class EmojiSpan extends DynamicDrawableSpan {
 
     private final int marginRight;
 
+    @IEmojiView.Align
+    int alignment;
+
     private Drawable drawable;
 
     private WeakReference<Drawable> drawableRef;
@@ -42,7 +45,7 @@ public class EmojiSpan extends DynamicDrawableSpan {
     }
 
     public EmojiSpan(Context context, int resourceId, int size, int marginLeft, int marginRight, int alignment) {
-        super(alignment);
+        this.alignment=alignment;
         this.context = context;
         this.resourceId = resourceId;
         this.size = size;
@@ -55,7 +58,7 @@ public class EmojiSpan extends DynamicDrawableSpan {
         Drawable d = getCachedDrawable();
         Rect rect = d.getBounds();
         if (fm != null) {
-            if (mVerticalAlignment == ALIGN_CENTER) {
+            if (alignment == ALIGN_CENTER) {
                 Paint.FontMetricsInt fmPaint = paint.getFontMetricsInt();
                 int fontHeight = fmPaint.bottom - fmPaint.top;
                 int drHeight = rect.bottom - rect.top;
@@ -107,18 +110,21 @@ public class EmojiSpan extends DynamicDrawableSpan {
     }
 
     @Override
-    public void draw(Canvas canvas, CharSequence text, int start, int end, float x, int top, int y, int bottom, Paint paint) {
+    public void draw(@NonNull Canvas canvas, CharSequence text, int start, int end, float x, int top, int y, int bottom, @NonNull Paint paint) {
         Drawable b = getCachedDrawable();
         canvas.save();
+        Paint.FontMetricsInt fm = paint.getFontMetricsInt();
 
-        int transY = bottom - b.getBounds().bottom;
-        if (mVerticalAlignment == ALIGN_BASELINE) {
-            transY -= paint.getFontMetricsInt().descent;
-        } else if (mVerticalAlignment == ALIGN_CENTER) {
-            transY = top + (bottom - top) / 2 - b.getBounds().height() / 2;
+        int transX= (int) (x+marginLeft);
+
+        int transY = y + fm.bottom - b.getBounds().bottom;
+        if (alignment == ALIGN_BASELINE) {
+            transY = y - b.getBounds().bottom;
+        } else if (alignment == ALIGN_CENTER) {
+            transY = y - (fm.bottom - fm.top) / 2 + fm.bottom - b.getBounds().height() / 2;
         }
 
-        canvas.translate(x + marginLeft, transY);
+        canvas.translate(transX, transY);
         b.draw(canvas);
         canvas.restore();
     }

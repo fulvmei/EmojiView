@@ -56,12 +56,12 @@ public class BigEmoji {
             R.drawable.comment_ic_big_emoji21,
             R.drawable.comment_ic_big_emoji22,
             R.drawable.comment_ic_big_emoji23,
-            R.drawable.comment_ic_big_emoji24};
+            R.drawable.search_result_article};
 
     public static List<Emoji> getDefaultBigEmojis() {
         List<Emoji> emojis = new ArrayList<>();
         for (int i = 0; i < NAMES.length; i++) {
-            Emoji bigEmoji = new Emoji("["+NAMES[i]+"]", RES[i], NAMES[i]);
+            Emoji bigEmoji = new Emoji(NAMES[i], RES[i], NAMES[i]);
             emojis.add(bigEmoji);
         }
         return emojis;

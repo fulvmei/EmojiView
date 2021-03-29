@@ -3,28 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:layout_height="wrap_content"
     tools:context=".MainActivity">
+
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/recyclerView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"/>-->
 
     <com.chengfu.android.emoji.EmojiTextView
         android:id="@+id/text"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:emojiMarginLeft="20dp"
-        app:emojiMarginRight="20dp"
-        app:emojiAlign="center"
-        app:emojiMatchType="one"
-        app:emojiSize="80dp" />
-
-    <com.chengfu.android.emoji.EmojiEditText
-        android:id="@+id/edit"
-        android:gravity="top"
-        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:emojiMarginLeft="20dp"
-        app:emojiMarginRight="20dp"
-        app:emojiSize="80dp" />
-
-
+        android:layout_weight="1"
+        android:ellipsize="end"
+        android:lineSpacingExtra="20dp"
+        android:textSize="80sp"
+        app:emojiAlign="center"
+        app:emojiMarginRight="40dp"
+        app:emojiMarginLeft="10dp"
+        app:emojiMatchType="full"
+        app:emojiSize="20dp" />
 </LinearLayout>
